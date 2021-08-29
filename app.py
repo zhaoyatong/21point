@@ -24,7 +24,7 @@ class Game:
         
     @staticmethod
     def exec_clear_screen_command():
-        if 'windows' in lower(platform.platform()):
+        if 'windows' in platform.platform().lower():
             os.system('cls')
         else:
             os.system('clear')
@@ -83,7 +83,7 @@ class Game:
         刷屏
         :return:
         """
-        exec_clear_screen_command()
+        self.exec_clear_screen_command()
         print('*' * 30, '   欢迎来到21点   ', '*' * 30, end='\n\n')
         print('庄家剩余筹码：', self.computer.chip, '\t', self.player.name, '剩余筹码：', self.player.chip, end='\n\n\n\n\n\n')
 
@@ -98,12 +98,12 @@ class Game:
             if self.player.chip <= 0:
                 print('输光光啦，回去拿点钞票再来吧^_^')
                 input()
-                exec_clear_screen_command()
+                self.exec_clear_screen_command()
                 break
             if self.computer.chip <= 0:
                 print('打败庄家了，所有的筹码都是你的了^_^')
                 input()
-                exec_clear_screen_command()
+                self.exec_clear_screen_command()
                 break
 
             bet = 0
