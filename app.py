@@ -1,5 +1,6 @@
 import random
 import os
+import platform
 
 
 class Poker:
@@ -20,6 +21,13 @@ class Game:
     def __init__(self):
         self.pokers = self.init_pokers()
         self.computer, self.player = self.init_players()
+        
+    @staticmethod
+    def exec_clear_screen_command():
+        if 'windows' in lower(platform.platform()):
+            os.system('cls')
+        else:
+            os.system('clear')
 
     @staticmethod
     def init_pokers():
@@ -75,7 +83,7 @@ class Game:
         刷屏
         :return:
         """
-        os.system('cls')
+        exec_clear_screen_command()
         print('*' * 30, '   欢迎来到21点   ', '*' * 30, end='\n\n')
         print('庄家剩余筹码：', self.computer.chip, '\t', self.player.name, '剩余筹码：', self.player.chip, end='\n\n\n\n\n\n')
 
@@ -90,12 +98,12 @@ class Game:
             if self.player.chip <= 0:
                 print('输光光啦，回去拿点钞票再来吧^_^')
                 input()
-                os.system('cls')
+                exec_clear_screen_command()
                 break
             if self.computer.chip <= 0:
                 print('打败庄家了，所有的筹码都是你的了^_^')
                 input()
-                os.system('cls')
+                exec_clear_screen_command()
                 break
 
             bet = 0
