@@ -140,6 +140,7 @@ class Game:
 
                 if player_point > 21:
                     print('当前点数：爆牌！！！', end='\n\n\n')
+                    input()
                     break
 
                 a_count = len(list(filter(lambda x: x.name == 'A', self.player.pokers)))
